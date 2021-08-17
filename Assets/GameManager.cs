@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         float Player1HP = Player1.GetComponent<Player>().CustomHP;
         float Player2HP = Player2.GetComponent<Player>().CustomHP;
         
-        //Debug.Log(Player1HP);
+        Debug.Log(Player1HP);
         //Debug.Log("P1C:" + Player1.GetComponent<Player>().Charge);
         //Debug.Log(Player2HP);
         //Debug.Log("P2C:" + Player2.GetComponent<Player>().Charge);
