@@ -28,8 +28,9 @@ namespace PlayerGenerator
         float XVelocity;
         bool FacingRight { get; set; } //stores direction facing
         bool InputLocked = false; //locks input if true
-        bool AttackLockedL = false; //activates light attack hitbox if true
-        bool AttackLockedH = false; //activates heavy attack hitbox if true
+        public bool AttackLockedL = false; //activates light attack hitbox if true
+        public bool AttackLockedH = false; //activates heavy attack hitbox if true
+        public bool isbeingattacked;
         bool DashLocked = false; //activates dash if true
         int DashTime = 0;
         //InputCode
@@ -47,8 +48,6 @@ namespace PlayerGenerator
         private Collider2D EnemyHitBoxL { get; set; }
         private Collider2D EnemyHitBoxH { get; set; }
         private Collider2D EnemyHitBox { get; set; }
-        private SpriteRenderer HeavySprite { get; set; }
-        private SpriteRenderer LightSprite { get; set; }
         private SpriteRenderer ShieldSprite { get; set; }
 
 
@@ -75,7 +74,7 @@ namespace PlayerGenerator
             this.CustomHP = Default((int)CustomHP, (int)DefaultInitialHealth);
             this.CustomMaxCharge = Default(CustomMaxCharge, DefaultInitialCharge);
         }
-        public void inithitbox(Collider2D AttackHitBoxL, Collider2D AttackHitBoxH, Collider2D HitBox, Collider2D EnemyHitBoxL, Collider2D EnemyHitBoxH, Collider2D EnemyHitBox, SpriteRenderer heavysprite, SpriteRenderer lightsprite, SpriteRenderer shieldsprite)//player hitbox constructor
+        public void inithitbox(Collider2D AttackHitBoxL, Collider2D AttackHitBoxH, Collider2D HitBox, Collider2D EnemyHitBoxL, Collider2D EnemyHitBoxH, Collider2D EnemyHitBox, SpriteRenderer shieldsprite)//player hitbox constructor
         {
             this.AttackHitBoxL = AttackHitBoxL;
             this.AttackHitBoxH = AttackHitBoxH;
@@ -83,8 +82,6 @@ namespace PlayerGenerator
             this.EnemyHitBoxL = EnemyHitBoxL;
             this.EnemyHitBoxH = EnemyHitBoxH;
             this.EnemyHitBox = EnemyHitBox;
-            this.HeavySprite = heavysprite;
-            this.LightSprite = lightsprite;
             this.ShieldSprite = shieldsprite;
         }
 
@@ -187,6 +184,11 @@ namespace PlayerGenerator
             { return DefaultValue; }
             else { return CustomValue; }
         }
+        void OnTriggerEnter2D(Collider2D col) 
+        {
+            if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG;}
+            if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG;}
+        }
 
         void Start()
         {
@@ -222,21 +224,10 @@ namespace PlayerGenerator
             XVelocity = this.GetComponent<Rigidbody2D>().velocity.x;
 
             //keeps hitboxes enabled while AttackLocked is true
-            AttackHitBoxL.enabled = AttackLockedL;
-            LightSprite.enabled = AttackLockedL;
+            AttackHitBoxL.gameObject.SetActive(AttackLockedL);
+            AttackHitBoxH.gameObject.SetActive(AttackLockedH);
 
-            AttackHitBoxH.enabled = AttackLockedH;
-            HeavySprite.enabled = AttackLockedH;
             if (DashLocked ==true) { GetComponent<Rigidbody2D>().velocity = new Vector2(DashDistance, 0); }
-
-            //removes HP if enemy attack hitbox touches our hitbox
-            if (EnemyHitBoxH.IsTouching(Hitbox)) { CustomHP -= CustomHeavyDMG; Debug.Log("true"); }
-
-            if (EnemyHitBoxL.IsTouching(Hitbox)) { CustomHP -= CustomLightDMG; }
-            //ensures damage is removed only once per hit
-            if (AttackHitBoxL.IsTouching(EnemyHitBox)) { AttackLockedL = false; };
-
-            if (AttackHitBoxH.IsTouching(EnemyHitBox)) { AttackLockedH = false; };
         }
     }
 }
