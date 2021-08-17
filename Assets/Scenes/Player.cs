@@ -33,6 +33,7 @@ namespace PlayerGenerator
         public bool isbeingattacked;
         bool DashLocked = false; //activates dash if true
         int DashTime = 0;
+        int AttackTime = 0;
         //InputCode
         private KeyCode InputRight { get; set; }
         private KeyCode InputLeft { get; set; }
@@ -126,10 +127,11 @@ namespace PlayerGenerator
         }
         IEnumerator AttackLockH(float damagetime) //method to lock input for attack timings
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
             AttackLockedH = true;
             yield return new WaitForSeconds(damagetime);
             AttackLockedH = false;
+            AttackTime = 0;
         }
 
         IEnumerator AttackLockUlt(float damagetime) //method to lock input for attack timings
@@ -161,9 +163,9 @@ namespace PlayerGenerator
         }
         public void HeavyAttack(KeyCode InputKey, bool AttackLocked) //heavy attack code
         {
-            if (AttackLocked == false & Input.GetKeyDown(InputKey))
+            if (AttackLocked == false & Input.GetKeyDown(InputKey) & AttackTime >= 60)
             {
-                StartCoroutine(InputLock(0.68f));
+                StartCoroutine(InputLock(0.9f));
                 StartCoroutine(AttackLockH(0.35f));
             }
         }
@@ -220,6 +222,7 @@ namespace PlayerGenerator
         {
             Charge += 1;
             DashTime += 1;
+            AttackTime += 1;
             YVelocity = this.GetComponent<Rigidbody2D>().velocity.y;
             XVelocity = this.GetComponent<Rigidbody2D>().velocity.x;
 
