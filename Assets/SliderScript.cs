@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SliderScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Slider slider;
+
+    public void SetCurrent(int currentvalue)
+        {slider.value = currentvalue;}
+
+    public void SetMax(int maxvalue)
+    { slider.maxValue = maxvalue; }
 }
