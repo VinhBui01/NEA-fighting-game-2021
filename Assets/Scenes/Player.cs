@@ -16,7 +16,7 @@ namespace PlayerGenerator
         public float CustomHP { get; set; }
         public int CustomHeavyDMG { get; set; } //this is how much damage is recieved when attacked
         public int CustomLightDMG { get; set; } //this is how much damage is recieved when attacked
-        private int CustomMaxCharge { get; set; }
+        public int CustomMaxCharge { get; set; }
         public int Charge = 0;
 
         // Movement variables
@@ -32,8 +32,8 @@ namespace PlayerGenerator
         public bool AttackLockedH = false; //activates heavy attack hitbox if true
         public bool isbeingattacked;
         bool DashLocked = false; //activates dash if true
-        int DashTime = 0;
-        int AttackTime = 0;
+        public int DashTime = 0;
+        public int AttackTime = 0;
         //InputCode
         private KeyCode InputRight { get; set; }
         private KeyCode InputLeft { get; set; }

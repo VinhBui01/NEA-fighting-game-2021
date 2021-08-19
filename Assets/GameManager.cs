@@ -10,8 +10,6 @@ using PlayerGenerator;
 public class GameManager : MonoBehaviour
 {   
     public Player Player1;
-    public GameObject Player1UI;
-    public GameObject Player2UI;
     public Player Player2;
 
     public Vector2 PlayerPosition1 = new Vector2 (-7f, -2f);
@@ -55,8 +53,30 @@ public class GameManager : MonoBehaviour
     public int P2Heavy = 0;//how much damage p2 does
     public int P2Light = 0;//how much damage p2 does
     public int P2HP = 0;
+    //sliders
+    public SliderScript P1HPBar;
+    public SliderScript P1ChargeBar;
+    public SliderScript P1AttackBar;
+    public SliderScript P1DashBar;
 
-    public void SetSlider() { }
+    public SliderScript P2HPBar;
+    public SliderScript P2ChargeBar;
+    public SliderScript P2AttackBar;
+    public SliderScript P2DashBar;
+    public void SetinitialSliders(int hp, int charge, SliderScript HPbar, SliderScript chargebar, SliderScript attackbar, SliderScript dashbar) 
+    {
+        HPbar.SetMax(hp);
+        chargebar.SetMax(charge);
+        attackbar.SetMax(60);
+        dashbar.SetMax(30);
+    }
+    public void SetCurrentValues(int hp, int charge, int attack, int dash, SliderScript HPbar, SliderScript chargebar, SliderScript attackbar, SliderScript dashbar) 
+    {
+        HPbar.SetCurrent(hp);
+        chargebar.SetCurrent(charge);
+        attackbar.SetCurrent(attack);
+        dashbar.SetCurrent(dash);
+    }
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
@@ -67,6 +87,9 @@ public class GameManager : MonoBehaviour
         Player2.initinput(false, P2Left, P2Right, P2Jump, P2Dash, P2AttackL, P2AttackH, P2Ult); //instance of player 2
         Player2.initdamage(P2Charge, P1Heavy, P1Light, P2HP); //instance of player 2
         Player2.transform.Rotate(new Vector3(0, 180, 0));//reverses player 2 direction
+
+        SetinitialSliders((int)Player1.CustomHP, Player1.CustomMaxCharge, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
+        SetinitialSliders((int)Player2.CustomHP, Player2.CustomMaxCharge, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
     }
 
     // Update is called once per frame
@@ -74,12 +97,9 @@ public class GameManager : MonoBehaviour
     {
         float Player1HP = Player1.GetComponent<Player>().CustomHP;
         float Player2HP = Player2.GetComponent<Player>().CustomHP;
-        
-        Debug.Log(Player1HP);
-        Debug.Log("P1C:" + Player1.GetComponent<Player>().Charge);
-        Debug.Log(Player2HP);
-        Debug.Log("P2C:" + Player2.GetComponent<Player>().Charge);
 
+        SetCurrentValues((int)Player1HP, Player1.Charge, Player1.DashTime, Player1.AttackTime, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
+        SetCurrentValues((int)Player2HP, Player2.Charge, Player2.DashTime, Player2.AttackTime, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         if (Player1HP <= 0 ) { this.enabled = false; Debug.Log("Player2 won"); }
         else if (Player2HP <= 0) { this.enabled = false; Debug.Log("Player1 won"); }
     }
