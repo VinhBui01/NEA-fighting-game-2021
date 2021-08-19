@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 157926206}
   - component: {fileID: 157926205}
   m_Layer: 5
-  m_Name: Dash manager
+  m_Name: Attack manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,8 +417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.0613, y: 41.480034}
-  m_SizeDelta: {x: 20.0618, y: 3.1456}
+  m_AnchoredPosition: {x: 5.5028024, y: 41.480034}
+  m_SizeDelta: {x: 23.0337, y: 3.1456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157926205
 MonoBehaviour:
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 287853878}
   - component: {fileID: 287853877}
   m_Layer: 5
-  m_Name: Attack Bar
+  m_Name: Dash Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2633,7 +2633,7 @@ GameObject:
   - component: {fileID: 1366918367}
   - component: {fileID: 1366918366}
   m_Layer: 5
-  m_Name: Attack manager
+  m_Name: Dash manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2735,7 +2735,7 @@ GameObject:
   - component: {fileID: 1405113207}
   - component: {fileID: 1405113206}
   m_Layer: 5
-  m_Name: Dash manager
+  m_Name: Attack manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2758,8 +2758,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.0613, y: 41.480034}
-  m_SizeDelta: {x: 20.0618, y: 3.1456}
+  m_AnchoredPosition: {x: 5.5245, y: 41.480034}
+  m_SizeDelta: {x: 22.8425, y: 3.1456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405113206
 MonoBehaviour:
@@ -2837,7 +2837,7 @@ GameObject:
   - component: {fileID: 1417649311}
   - component: {fileID: 1417649310}
   m_Layer: 5
-  m_Name: Dash Bar
+  m_Name: Attack Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3326,7 +3326,7 @@ GameObject:
   - component: {fileID: 1631384847}
   - component: {fileID: 1631384846}
   m_Layer: 5
-  m_Name: Dash Bar
+  m_Name: Attack Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3586,7 +3586,7 @@ GameObject:
   - component: {fileID: 1716105828}
   - component: {fileID: 1716105827}
   m_Layer: 5
-  m_Name: Attack manager
+  m_Name: Dash manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3984,7 +3984,7 @@ GameObject:
   - component: {fileID: 2019294176}
   - component: {fileID: 2019294175}
   m_Layer: 5
-  m_Name: Attack Bar
+  m_Name: Dash Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4132,5 +4132,5 @@ MonoBehaviour:
   P1DashBar: {fileID: 1405113206}
   P2HPBar: {fileID: 1041303139}
   P2ChargeBar: {fileID: 756132850}
-  P2AttackBar: {fileID: 1716105827}
-  P2DashBar: {fileID: 157926205}
+  P2AttackBar: {fileID: 157926205}
+  P2DashBar: {fileID: 1716105827}

@@ -124,6 +124,7 @@ namespace PlayerGenerator
             AttackLockedL = true;
             yield return new WaitForSeconds(damagetime);
             AttackLockedL = false;
+            AttackTime = 15;
         }
         IEnumerator AttackLockH(float damagetime) //method to lock input for attack timings
         {
