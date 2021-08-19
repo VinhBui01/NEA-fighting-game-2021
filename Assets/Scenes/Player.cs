@@ -154,7 +154,7 @@ namespace PlayerGenerator
 
         public void LightAttack(KeyCode InputKey, bool AttackLocked) //light attack code
         {
-            if (AttackLocked == false & Input.GetKeyDown(InputKey))
+            if (AttackLocked == false & Input.GetKeyDown(InputKey) & AttackTime >= 60)
             {
                 StartCoroutine(InputLock(0.35f));
                 StartCoroutine(AttackLockL(0.15f));
