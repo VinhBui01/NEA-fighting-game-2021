@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 157926206}
   - component: {fileID: 157926205}
   m_Layer: 5
-  m_Name: Attack manager
+  m_Name: Dash manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,6 +611,8 @@ MonoBehaviour:
   AttackLockedL: 0
   AttackLockedH: 0
   isbeingattacked: 0
+  DashTime: 0
+  AttackTime: 0
 --- !u!60 &159645271
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -766,7 +768,7 @@ GameObject:
   - component: {fileID: 287853878}
   - component: {fileID: 287853877}
   m_Layer: 5
-  m_Name: Dash Bar
+  m_Name: Attack Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1732,6 +1734,8 @@ MonoBehaviour:
   AttackLockedL: 0
   AttackLockedH: 0
   isbeingattacked: 0
+  DashTime: 0
+  AttackTime: 0
 --- !u!60 &786491765
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2629,7 +2633,7 @@ GameObject:
   - component: {fileID: 1366918367}
   - component: {fileID: 1366918366}
   m_Layer: 5
-  m_Name: Dash manager
+  m_Name: Attack manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2731,7 +2735,7 @@ GameObject:
   - component: {fileID: 1405113207}
   - component: {fileID: 1405113206}
   m_Layer: 5
-  m_Name: Attack manager
+  m_Name: Dash manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2833,7 +2837,7 @@ GameObject:
   - component: {fileID: 1417649311}
   - component: {fileID: 1417649310}
   m_Layer: 5
-  m_Name: Attack Bar
+  m_Name: Dash Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3322,7 +3326,7 @@ GameObject:
   - component: {fileID: 1631384847}
   - component: {fileID: 1631384846}
   m_Layer: 5
-  m_Name: Attack Bar
+  m_Name: Dash Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3582,7 +3586,7 @@ GameObject:
   - component: {fileID: 1716105828}
   - component: {fileID: 1716105827}
   m_Layer: 5
-  m_Name: Dash manager
+  m_Name: Attack manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3980,7 +3984,7 @@ GameObject:
   - component: {fileID: 2019294176}
   - component: {fileID: 2019294175}
   m_Layer: 5
-  m_Name: Dash Bar
+  m_Name: Attack Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4089,8 +4093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player1: {fileID: 159645270}
-  Player1UI: {fileID: 0}
-  Player2UI: {fileID: 0}
   Player2: {fileID: 786491764}
   PlayerPosition1: {x: -7, y: -2}
   PlayerPosition2: {x: 7, y: -2}
@@ -4124,3 +4126,11 @@ MonoBehaviour:
   P2Heavy: 0
   P2Light: 0
   P2HP: 0
+  P1HPBar: {fileID: 1697360353}
+  P1ChargeBar: {fileID: 1439679501}
+  P1AttackBar: {fileID: 1366918366}
+  P1DashBar: {fileID: 1405113206}
+  P2HPBar: {fileID: 1041303139}
+  P2ChargeBar: {fileID: 756132850}
+  P2AttackBar: {fileID: 1716105827}
+  P2DashBar: {fileID: 157926205}
