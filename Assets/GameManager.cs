@@ -10,6 +10,8 @@ using PlayerGenerator;
 public class GameManager : MonoBehaviour
 {   
     public Player Player1;
+    public GameObject Player1UI;
+    public GameObject Player2UI;
     public Player Player2;
 
     public Vector2 PlayerPosition1 = new Vector2 (-7f, -2f);
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
     public int P2Light = 0;//how much damage p2 does
     public int P2HP = 0;
 
-
+    public void SetSlider() { }
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
