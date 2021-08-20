@@ -8,6 +8,10 @@ namespace PlayerGenerator
     public class Player : MonoBehaviour
 
     {
+        //handicap variables
+        public int HeavyCount;
+        public int LightCount;
+
         //damage variables
         public const float DefaultInitialHealth = 600;
         public const int DefaultInitialHeavyDamage = 60;
@@ -120,6 +124,7 @@ namespace PlayerGenerator
         }
         IEnumerator AttackLockL(float damagetime) //method to lock input for attack timings
         {
+            
             yield return new WaitForSeconds(0.1f);
             AttackLockedL = true;
             yield return new WaitForSeconds(damagetime);
@@ -142,6 +147,7 @@ namespace PlayerGenerator
             yield return new WaitForSeconds(damagetime);
             ShieldSprite.enabled = false;
             CustomHP = CustomHP /2;
+            Charge = 0;
         }
 
 
@@ -177,7 +183,6 @@ namespace PlayerGenerator
             {
                 StartCoroutine(InputLock(0.3f));
                 StartCoroutine(AttackLockUlt(6));
-                Charge = 0;
             }
         }
 
@@ -189,13 +194,15 @@ namespace PlayerGenerator
         }
         void OnTriggerEnter2D(Collider2D col) 
         {
-            if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG;}
-            if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG;}
+            if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG; LightCount += 1; }
+            if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG; LightCount += 1; }
         }
 
         void Start()
         {
             Physics2D.IgnoreLayerCollision(6, 6, true);
+            HeavyCount = 0;
+            LightCount = 0;
         }
         void Update()
         {
@@ -218,6 +225,8 @@ namespace PlayerGenerator
             HeavyAttack(InputAttackH, AttackLockedH);
 
             Ultimate(InputUlt, InputLocked);
+
+            
         }
         void FixedUpdate() //updates 60 times a second
         {

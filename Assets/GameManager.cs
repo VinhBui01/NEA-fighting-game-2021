@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using PlayerGenerator;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
-{   
+{
+    public Text timerUI;
     public Player Player1;
     public Player Player2;
 
     public Vector2 PlayerPosition1 = new Vector2 (-7f, -2f);
     public Vector2 PlayerPosition2 = new Vector2 (7f, -2f);
 
+    public int timer;
     //Player1 inputs
     public KeyCode P1Right = KeyCode.D;
     public KeyCode P1Left = KeyCode.A;
@@ -77,6 +79,16 @@ public class GameManager : MonoBehaviour
         attackbar.SetCurrent(attack);
         dashbar.SetCurrent(dash);
     }
+
+    public void formattime() 
+    {
+        string second = ((timer / 60) % 60).ToString();
+        string minute = (timer / 3600).ToString();
+
+        if (second.Length < 2) { second = "0" + second; }
+        if (minute.Length < 2) { minute = "0" + minute; }
+        timerUI.text = minute+":"+ second;
+    }
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
@@ -90,11 +102,13 @@ public class GameManager : MonoBehaviour
 
         SetinitialSliders((int)Player1.CustomHP, Player1.CustomMaxCharge, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetinitialSliders((int)Player2.CustomHP, Player2.CustomMaxCharge, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
+        timer = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        timer += 1;
         float Player1HP = Player1.GetComponent<Player>().CustomHP;
         float Player2HP = Player2.GetComponent<Player>().CustomHP;
 
@@ -102,5 +116,6 @@ public class GameManager : MonoBehaviour
         SetCurrentValues((int)Player2HP, Player2.Charge, Player2.DashTime, Player2.AttackTime, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         if (Player1HP <= 0 ) { this.enabled = false; Debug.Log("Player2 won"); }
         else if (Player2HP <= 0) { this.enabled = false; Debug.Log("Player1 won"); }
+        formattime();
     }
 }
