@@ -8,9 +8,10 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); } //moves to next scene
 
-    public void quit()
+    public void QuitGame()
     {
-        
+        Debug.Log("Application Terminated");
+        Application.Quit();
     }
     void Update()
     {
