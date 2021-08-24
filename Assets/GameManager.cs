@@ -7,9 +7,10 @@ using System.Collections;
 using UnityEngine;
 using PlayerGenerator;
 using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
-    public Text timerUI;
+    public TMP_Text timerUI;
     public Player Player1;
     public Player Player2;
 
