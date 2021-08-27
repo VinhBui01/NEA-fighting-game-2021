@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
+
 using UnityEngine;
 using PlayerGenerator;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
@@ -90,6 +87,12 @@ public class GameManager : MonoBehaviour
         if (minute.Length < 2) { minute = "0" + minute; }
         timerUI.text = minute+":"+ second;
     }
+
+    public void GameEnd( string winner)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Debug.Log(winner + " won"); 
+    }
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
@@ -115,8 +118,8 @@ public class GameManager : MonoBehaviour
 
         SetCurrentValues((int)Player1HP, Player1.Charge, Player1.DashTime, Player1.AttackTime, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetCurrentValues((int)Player2HP, Player2.Charge, Player2.DashTime, Player2.AttackTime, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
-        if (Player1HP <= 0 ) { this.enabled = false; Debug.Log("Player2 won"); }
-        else if (Player2HP <= 0) { this.enabled = false; Debug.Log("Player1 won"); }
+        if (Player1HP <= 0 ) { GameEnd("Player 2"); }
+        else if (Player2HP <= 0) { GameEnd("Player 1"); }
         formattime();
     }
 }
