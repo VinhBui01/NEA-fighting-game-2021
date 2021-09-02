@@ -5,27 +5,31 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
-    public List<string> ReadSave(string filename)
+    public string[] ReadSave(string filename)
     {
-        List<string> Text = new List<string>();
         try
         {
-            string[] readText = File.ReadAllLines(filename);
-            foreach (string s in readText)
-            {
-                Text.Add(s);
-            }
+            string[] ReadText = File.ReadAllLines(filename);
+        return ReadText;
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            return null;
         }
-        return Text;
     }
     void Start()
         {
-        ReadSave("SaveFile.txt");
+        string[] data = new string[4];
+        data =ReadSave("SaveFile.txt");
+        if (data[0] == "true") { }
+        else if (data[0] == "false")
+        {
+            if (data[1] == "000") { }
+            else { }
         }
+
+    }
 
         // Update is called once per frame
         void Update()
