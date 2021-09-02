@@ -1,6 +1,6 @@
 using System.IO;
-
-public class StartManager
+using UnityEngine;
+public class StartManager : MonoBehaviour
 {
     //public int Gamemode;
     public bool GameModeOnline;
