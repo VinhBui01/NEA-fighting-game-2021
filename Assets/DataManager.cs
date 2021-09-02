@@ -5,28 +5,26 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
-    public List<string> ReadSave()
+    public List<string> ReadSave(string filename)
     {
         List<string> Text = new List<string>();
         try
         {
-            string[] readText = File.ReadAllLines("Sile.txt");
+            string[] readText = File.ReadAllLines(filename);
             foreach (string s in readText)
             {
                 Text.Add(s);
             }
         }
-
         catch (FileNotFoundException e)
         {
-            Debug.Log("penis");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
         return Text;
     }
     void Start()
         {
-
+        ReadSave("SaveFile.txt");
         }
 
         // Update is called once per frame

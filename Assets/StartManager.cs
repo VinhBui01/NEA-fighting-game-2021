@@ -3,7 +3,6 @@ using UnityEngine;
 public class StartManager : MonoBehaviour
 {
     //public int Gamemode;
-    public bool GameModeOnline;
     public void offline()
     {
 
@@ -18,9 +17,5 @@ public class StartManager : MonoBehaviour
     public void online()
     {
         Clear("true");
-    }
-    private void Update()
-    {
-        Debug.Log(GameModeOnline);
     }
 }
