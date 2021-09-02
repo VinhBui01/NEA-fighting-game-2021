@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Threading.Tasks;
 
-public class DataController : GameManager
+public class DataController:MonoBehaviour
 {
     //public int Gamemode;
     public bool GameModeOnline;
@@ -12,14 +13,11 @@ public class DataController : GameManager
         GameModeOnline=  false;
     }
 
-    public void Clear()
+    public void Clear() //reformats text file to empty
     {
-        string[] lines =
-        {
-            "P1 0 0 0", "P2 0 0 0"
-        };
-
-        File.WriteAllLines(@"C:unityprojects\NEA fighting game 2021\SaveFile.txt", lines);
+        string[] lines = { "P1 0 0 0", "P2 0 0 0" };
+        File.WriteAllLines("SaveFile.txt", lines);
+        Debug.Log("done");
     }
     public void online()
     {
