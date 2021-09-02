@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+namespace MenuManager
 {
-    public void PlayGame(int SceneNumber) //moves to next scene
-    { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + SceneNumber); } 
-
-    public void QuitGame() //quits game
+    public class MenuManager : MonoBehaviour
     {
-        Debug.Log("Application Terminated");
-        Application.Quit();
-    }
+        public void MoveScene(int SceneNumber) //moves to next scene
+        { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + SceneNumber); }
 
+        public void QuitGame() //quits game
+        {
+            Debug.Log("Application Terminated");
+            Application.Quit();
+        }
+
+    }
 }

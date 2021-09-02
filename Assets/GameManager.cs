@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
+    
     public TMP_Text timerUI;
     public Player Player1;
     public Player Player2;
@@ -93,6 +94,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Debug.Log(winner + " won"); 
     }
+
+    
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
@@ -107,6 +110,9 @@ public class GameManager : MonoBehaviour
         SetinitialSliders((int)Player1.CustomHP, Player1.CustomMaxCharge, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetinitialSliders((int)Player2.CustomHP, Player2.CustomMaxCharge, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         timer = 0;
+        Debug.Log("1");
+        new WaitForSeconds(3);
+        Debug.Log("3");
     }
 
     // Update is called once per frame

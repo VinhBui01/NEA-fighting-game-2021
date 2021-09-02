@@ -7,18 +7,20 @@ public class StartManager : MonoBehaviour
     public void offline()
     {
 
-        GameModeOnline =  false;
-        Clear();
+        Clear("false");
     }
 
-    public void Clear() //reformats text file to empty
+    public void Clear(string GameModeOnline) //reformats text file to empty
     {
-        string[] lines = { "000", "P1 000 000", "P2 000 000" };
+        string[] lines = { GameModeOnline, "000", "P1 000 000", "P2 000 000" };
         File.WriteAllLines("SaveFile.txt", lines);
     }
     public void online()
     {
-        GameModeOnline = true;
+        Clear("true");
     }
-
+    private void Update()
+    {
+        Debug.Log(GameModeOnline);
+    }
 }

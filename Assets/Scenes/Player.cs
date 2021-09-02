@@ -151,7 +151,7 @@ namespace PlayerGenerator
         }
 
 
-        public void Dashcode(float x, float y) //code for dash moevement
+        public void Dashcode(float x, float y) //code for dash movement
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(x, y);
             StartCoroutine(DashLock(0.05f)); //locks player into the dash for 0.29 seconds
