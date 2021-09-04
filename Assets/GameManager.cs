@@ -64,8 +64,11 @@ public class GameManager : MonoBehaviour
     public SliderScript P2ChargeBar;
     public SliderScript P2AttackBar;
     public SliderScript P2DashBar;
-
-    public int[][] MatchAttackCount;
+    //counters
+    public int P1HeavyCount = 0;
+    public int P1LightCount = 0;
+    public int P2HeavyCount = 0;
+    public int P2LightCount = 0;
     public void SetinitialSliders(int hp, int charge, SliderScript HPbar, SliderScript chargebar, SliderScript attackbar, SliderScript dashbar) 
     {
         HPbar.SetMax(hp);
@@ -123,19 +126,15 @@ public class GameManager : MonoBehaviour
         timer += 1;
         float Player1HP = Player1.GetComponent<Player>().CustomHP;
         float Player2HP = Player2.GetComponent<Player>().CustomHP;
-        int Player1HeavyCount = Player1.GetComponent<Player>().HeavyCount;
-        int Player1LightCount = Player1.GetComponent<Player>().LightCount;
-        int Player2HeavyCount = Player2.GetComponent<Player>().HeavyCount;
-        int Player2LightCount = Player2.GetComponent<Player>().LightCount;
+        P1HeavyCount = Player1.GetComponent<Player>().HeavyCount;
+        P1LightCount = Player1.GetComponent<Player>().LightCount;
+        P2HeavyCount = Player2.GetComponent<Player>().HeavyCount;
+        P2LightCount = Player2.GetComponent<Player>().LightCount;
         SetCurrentValues((int)Player1HP, Player1.Charge, Player1.DashTime, Player1.AttackTime, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetCurrentValues((int)Player2HP, Player2.Charge, Player2.DashTime, Player2.AttackTime, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         if (Player1HP <= 0 ) { GameEnd("Player 2 won");}
         else if (Player2HP <= 0) { GameEnd("Player 1 won"); }
-        if (GameWon == true)
-        { 
-            MatchAttackCount[0] = new int[] { Player1HeavyCount, Player1LightCount };
-            MatchAttackCount[1] = new int[] { Player2HeavyCount, Player2LightCount };
-        }
+
         formattime();
     }
 }

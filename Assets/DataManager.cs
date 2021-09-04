@@ -70,9 +70,8 @@ public class DataManager : MonoBehaviour
     }
     void offlinewin (int[][] OfflineTotal)
     {
-        int[][] MatchAttackCount = GameManager.MatchAttackCount;
-        string P1string = "p1 " + (OfflineTotal[1][0]+MatchAttackCount[0][0])+ " " + (OfflineTotal[1][1] + MatchAttackCount[0][1]);
-        string P2string = "p2 " + (OfflineTotal[2][0] + MatchAttackCount[1][0]) + " " + (OfflineTotal[2][1] + MatchAttackCount[1][1]);
+        string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount) + " " + (OfflineTotal[1][1] + GameManager.P1LightCount);
+        string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount) + " " + (OfflineTotal[2][1] + GameManager.P2LightCount);
         string[] lines = { "false", (OfflineTotal[0][0]+GameManager.timer).ToString(), P1string, P2string };
         File.WriteAllLines("SaveFile.txt", lines);
     }
