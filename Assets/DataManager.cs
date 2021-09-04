@@ -6,7 +6,14 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
-    int[][] OfflineTotal = new int[3][];
+    //int[][] OfflineTotal = new int[3][];
+
+    int[][] OfflineTotal = new int[][]
+{
+new int[] { 1, 3, 5, 7, 9 },
+new int[] { 0, 2, 4, 6 },
+new int[] { 11, 22 }
+};
     bool Online;
     public GameManager GameManager;
     public string[] ReadSave(string filename)
@@ -38,9 +45,10 @@ public class DataManager : MonoBehaviour
         playerint[0] = Int32.Parse(datasplit[1]);
         playerint[1] = Int32.Parse(datasplit[2]);
         return playerint;
+        
     }
 
-    int[][] OfflineStart(string[] data)
+    void OfflineStart(string[] data)
     {
         int GameTime = Int32.Parse(data[1]);
         string P1attackstring = data[2];
@@ -53,10 +61,9 @@ public class DataManager : MonoBehaviour
         LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
         int[][] SaveFileData = new int[3][];
 
-        SaveFileData[0] = new int[] {GameTime};
-        SaveFileData[1] = P1attacks;
-        SaveFileData[2] = P2attacks;
-        return SaveFileData;
+        OfflineTotal[0] = new int[] {1};
+        OfflineTotal[1] = new int[] {1, 2, 3 };
+        OfflineTotal[2] = new int[] { 1, 2, 3 };
 
     }
     void LoadAttackData(int P1Heavy, int P1Light, float P1HP, int P2Heavy, int P2Light, float P2HP)
@@ -84,9 +91,10 @@ public class DataManager : MonoBehaviour
         else if (Savedata[0] == "false")
         {
             Online = false;
-            if (Savedata[1] != "000") { OfflineTotal = OfflineStart(Savedata); }
+            if (Savedata[1] != "000") {OfflineStart(Savedata); }
         }
         GameManager.enabled= true; //starts game after data is loaded
+        Debug.Log(OfflineTotal[0][0]);
     }
 
         // Update is called once per frame
