@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
+    int[][] OfflineTotal = new int[3][];
     public GameManager GameManager;
     public string[] ReadSave(string filename)
     {
@@ -38,7 +39,7 @@ public class DataManager : MonoBehaviour
         return playerint;
     }
 
-    void Offline(string[] data)
+    int[][] OfflineStart(string[] data)
     {
         int GameTime = Int32.Parse(data[1]);
         string P1attackstring = data[2];
@@ -49,6 +50,12 @@ public class DataManager : MonoBehaviour
         float P1HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime)*2000;
         float P2HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime)* 2000;
         LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
+        int[][] SaveFileData = new int[3][];
+
+        SaveFileData[0] = new int[] {GameTime};
+        SaveFileData[1] = P1attacks;
+        SaveFileData[2] = P2attacks;
+        return SaveFileData;
 
     }
     void LoadAttackData(int P1Heavy, int P1Light, float P1HP, int P2Heavy, int P2Light, float P2HP)
@@ -60,7 +67,8 @@ public class DataManager : MonoBehaviour
         GameManager.P2Heavy = P1Heavy;
         GameManager.P2Light = P1Light;
     }
-
+    void offlinewin ()
+    { }
     void Start()
     {
         string[] Savedata = new string[4];
@@ -68,16 +76,15 @@ public class DataManager : MonoBehaviour
         if (Savedata[0] == "true") { }
         else if (Savedata[0] == "false")
         {
-            if (Savedata[1] != "000") { Offline(Savedata); }
+            if (Savedata[1] != "000") { OfflineTotal = OfflineStart(Savedata); }
         }
-
         GameManager.enabled= true; //starts game after data is loaded
     }
 
         // Update is called once per frame
         void Update()
         {
-
+        if (GameManager.GameWon) {}
         }
     } 
 

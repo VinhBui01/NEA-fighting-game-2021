@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-    
+    public bool GameWon = false;   
     public TMP_Text timerUI;
     public Player Player1;
     public Player Player2;
@@ -91,7 +91,6 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd( string winner)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Debug.Log(winner + " won"); 
     }
 
