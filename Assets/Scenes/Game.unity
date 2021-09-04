@@ -1289,6 +1289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 535438853}
+  - component: {fileID: 535438854}
   m_Layer: 7
   m_Name: Set
   m_TagString: Untagged
@@ -1314,6 +1315,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535438854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535438852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa4de08d2e83aa48a8956ff748eaa6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 2065501468}
 --- !u!1 &577656699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4195,7 +4209,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065501467}
-  - component: {fileID: 2065501469}
   - component: {fileID: 2065501468}
   m_Layer: 0
   m_Name: Players
@@ -4232,6 +4245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9961431ec8bbdd4d9da3a3304157290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameWon: 0
   timerUI: {fileID: 739330737}
   Player1: {fileID: 159645270}
   Player2: {fileID: 786491764}
@@ -4276,15 +4290,3 @@ MonoBehaviour:
   P2ChargeBar: {fileID: 756132850}
   P2AttackBar: {fileID: 157926205}
   P2DashBar: {fileID: 1716105827}
---- !u!114 &2065501469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065501466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa4de08d2e83aa48a8956ff748eaa6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

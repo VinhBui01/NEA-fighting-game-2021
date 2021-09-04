@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
     public SliderScript P2ChargeBar;
     public SliderScript P2AttackBar;
     public SliderScript P2DashBar;
+
+    public int[][] MatchAttackCount;
     public void SetinitialSliders(int hp, int charge, SliderScript HPbar, SliderScript chargebar, SliderScript attackbar, SliderScript dashbar) 
     {
         HPbar.SetMax(hp);
@@ -91,6 +93,8 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd( string winner)
     {
+        MatchAttackCount[0] = new int[] { Player1.GetComponent<Player>().HeavyCount, Player1.GetComponent<Player>().LightCount};
+        MatchAttackCount[1] = new int[] { Player2.GetComponent<Player>().HeavyCount, Player2.GetComponent<Player>().LightCount};
         Debug.Log(winner + " won"); 
     }
 
