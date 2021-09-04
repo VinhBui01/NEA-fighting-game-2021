@@ -68,12 +68,13 @@ namespace PlayerGenerator
             this.InputUlt = inputult;
 
         }
-        public void initdamage(int custommaxcharge, int customHeavyDMG, int customLightDMG, int customHP)//player damage constructor
+        public void initdamage(int custommaxcharge, int customHeavyDMG, int customLightDMG, float customHP)//player damage constructor
         {
             this.CustomHP = customHP;
             this.CustomMaxCharge = custommaxcharge;
             this.CustomHeavyDMG = customHeavyDMG;
             this.CustomLightDMG = customLightDMG;
+            //sets values to default if 0
             this.CustomHeavyDMG = Default(CustomHeavyDMG, DefaultInitialHeavyDamage);
             this.CustomLightDMG = Default(CustomLightDMG, DefaultInitialLightDamage);
             this.CustomHP = Default((int)CustomHP, (int)DefaultInitialHealth);

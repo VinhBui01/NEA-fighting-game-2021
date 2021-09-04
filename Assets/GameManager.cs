@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
     public int P1Charge = 0;
     public int P1Heavy = 0;//how much damage p1 does
     public int P1Light = 0;//how much damage p1 does
-    public int P1HP = 0;
+    public float P1HP = 0;
 
     public int P2Charge = 0;
     public int P2Heavy = 0;//how much damage p2 does
     public int P2Light = 0;//how much damage p2 does
-    public int P2HP = 0;
+    public float P2HP = 0;
     //sliders
     public SliderScript P1HPBar;
     public SliderScript P1ChargeBar;
