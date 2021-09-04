@@ -48,8 +48,8 @@ public class DataManager : MonoBehaviour
         string P2attackstring = data[3];
         int[] P2attacks = split(P2attackstring);
         //Hp is calculated based on damage recieved
-        float P1HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime)*2000;
-        float P2HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime)* 2000;
+        float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime)*2000;
+        float P2HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime)* 2000;
         LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
         int[][] SaveFileData = new int[3][];
 
@@ -73,7 +73,7 @@ public class DataManager : MonoBehaviour
         int[][] MatchAttackCount = GameManager.MatchAttackCount;
         string P1string = "p1 " + (OfflineTotal[1][0]+MatchAttackCount[0][0])+ " " + (OfflineTotal[1][1] + MatchAttackCount[0][1]);
         string P2string = "p2 " + (OfflineTotal[2][0] + MatchAttackCount[1][0]) + " " + (OfflineTotal[2][1] + MatchAttackCount[1][1]);
-        string[] lines = { "false", OfflineTotal[0][0].ToString(), P1string, P2string };
+        string[] lines = { "false", (OfflineTotal[0][0]+GameManager.timer).ToString(), P1string, P2string };
         File.WriteAllLines("SaveFile.txt", lines);
     }
 
@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
                 if (Online == false) { offlinewin(OfflineTotal); }
                 if (Online == true) { }
             { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
-        }
+            }
         }
     } 
 

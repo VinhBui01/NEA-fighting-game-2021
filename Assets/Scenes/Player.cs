@@ -9,8 +9,8 @@ namespace PlayerGenerator
 
     {
         //handicap variables
-        public int HeavyCount;
-        public int LightCount;
+        public int HeavyCount = 0;
+        public int LightCount = 0;
 
         //damage variables
         public const float DefaultInitialHealth = 600;
@@ -195,8 +195,8 @@ namespace PlayerGenerator
         }
         void OnTriggerEnter2D(Collider2D col) 
         {
-            if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG; LightCount += 1; }
-            if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG; LightCount += 1; }
+            if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG; HeavyCount += 1;}
+            if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG; LightCount += 1;}
         }
 
         void Start()

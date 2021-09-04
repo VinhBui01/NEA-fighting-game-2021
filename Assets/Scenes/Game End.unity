@@ -152,11 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
+      value: MoveScene
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuManager, Assembly-CSharp
+      value: MenuManager.MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -736,11 +736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
+      value: MoveScene
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuManager, Assembly-CSharp
+      value: MenuManager.MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3126938915715528211, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
