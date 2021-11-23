@@ -26,11 +26,10 @@ public class DataManager : MonoBehaviour
     float HPcalculation(int HeavyCount, int LightCount, int GameTime) //Calculates HP
         {
         Debug.Log("L"+LightCount); Debug.Log("H"+HeavyCount);
-        float HeavyPM = (HeavyCount*180*4000*60)/GameTime;
-        float LightPM = (LightCount*180*2000*60)/GameTime;
-        float Health = LightPM+(HeavyPM);
-        if (Health == 0) { return 2000; }
-        else { return Health; }
+
+        float Health = (LightCount+2*HeavyCount)*180/GameTime;
+        if (Health == 0) { return 4000; }
+        else { return Health*2000; }
         }
     int[] split(string playerstring)  //seperates the string into an integer array
     {
@@ -54,9 +53,12 @@ public class DataManager : MonoBehaviour
         //repeated runs
         {
             Debug.Log(GameTime);
+            Debug.Log("P1");
             float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime);
+            Debug.Log("H1" + P1HP);
+            Debug.Log("P2");
             float P2HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime);
-            Debug.Log("H1"+ P1HP); Debug.Log("H2" + P2HP);
+            Debug.Log("H2" + P2HP);
             LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
         }
         else
@@ -79,9 +81,9 @@ public class DataManager : MonoBehaviour
         GameManager.P1HP = P1HP;
         GameManager.P1Heavy = P1Heavy;
         GameManager.P1Light = P1Light;
-        GameManager.P2HP = P1HP;
-        GameManager.P2Heavy = P1Heavy;
-        GameManager.P2Light = P1Light;
+        GameManager.P2HP = P2HP;
+        GameManager.P2Heavy = P2Heavy;
+        GameManager.P2Light = P2Light;
     }
     void offlinewin (int[][] OfflineTotal)
     {
@@ -114,7 +116,7 @@ public class DataManager : MonoBehaviour
             {
                 string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
                 string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
-                string[] lines = { "false", (OfflineTotal[0][0] + GameManager.timer).ToString(), P1string, P2string };
+                string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer)/60).ToString(), P1string, P2string };
                 File.WriteAllLines("SaveFile.txt", lines); ;
             }
                 if (Online == true) { }
