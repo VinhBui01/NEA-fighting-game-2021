@@ -193,7 +193,7 @@ namespace PlayerGenerator
             { return DefaultValue; }
             else { return CustomValue; }
         }
-        void OnTriggerEnter2D(Collider2D col) 
+        void OnTriggerEnter2D(Collider2D col) //counts number of times attacked
         {
             if (col == EnemyHitBoxH) { CustomHP -= CustomHeavyDMG; HeavyCount += 1;}
             if (col == EnemyHitBoxL) { CustomHP -= CustomLightDMG; LightCount += 1;}

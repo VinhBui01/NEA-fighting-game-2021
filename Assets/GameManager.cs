@@ -100,7 +100,12 @@ public class GameManager : MonoBehaviour
         Debug.Log(winner);
     }
 
-    
+    private void OnGUI()
+    {
+        GUI.contentColor = Color.white;
+        GUI.Label(new Rect(0, 10, 200, 20), Player1.CustomHP.ToString(),new GUIStyle() { fontSize = 10 });
+        GUI.Label(new Rect(70, 10, 200, 20), Player2.CustomHP.ToString(), new GUIStyle() { fontSize = 10 });
+    }
     void Start()
     {
         Player1.inithitbox(Player1HitBoxL, Player1HitBoxH, Player1HitBox, Player2HitBoxL, Player2HitBoxH, Player2HitBox, Player1ShieldSprite); //instantiation of player1 hitbox
@@ -115,9 +120,6 @@ public class GameManager : MonoBehaviour
         SetinitialSliders((int)Player1.CustomHP, Player1.CustomMaxCharge, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetinitialSliders((int)Player2.CustomHP, Player2.CustomMaxCharge, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         timer = 0;
-        Debug.Log("1");
-        new WaitForSeconds(3);
-        Debug.Log("3");
     }
 
     // Update is called once per frame
@@ -126,9 +128,10 @@ public class GameManager : MonoBehaviour
         timer += 1;
         float Player1HP = Player1.GetComponent<Player>().CustomHP;
         float Player2HP = Player2.GetComponent<Player>().CustomHP;
-        P1HeavyCount = Player1.GetComponent<Player>().HeavyCount;
+        // Debug.Log(Player1.CustomHP); Debug.Log(Player2.CustomHP);
+        P1HeavyCount = Player1.GetComponent<Player>().HeavyCount;//number of times p1 was hit
         P1LightCount = Player1.GetComponent<Player>().LightCount;
-        P2HeavyCount = Player2.GetComponent<Player>().HeavyCount;
+        P2HeavyCount = Player2.GetComponent<Player>().HeavyCount;//number of times p2 was hiit
         P2LightCount = Player2.GetComponent<Player>().LightCount;
         SetCurrentValues((int)Player1HP, Player1.Charge, Player1.DashTime, Player1.AttackTime, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetCurrentValues((int)Player2HP, Player2.Charge, Player2.DashTime, Player2.AttackTime, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
