@@ -20,20 +20,17 @@ public class Registration : MonoBehaviour
         WWWForm form = new WWWForm();
             form.AddField("name", nameField.text);
             form.AddField("password", passwordField.text);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/register.php", form))
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/register.php", form);
+        yield return www.SendWebRequest();
+        if (www.downloadHandler.text == "0")
         {
-            yield return www.SendWebRequest();
-            if (www.error == "0")
-            {
-                Debug.Log("User Created Successfully");
-                 
-
-            }
-            else
-            {
-                Debug.Log("User creation failed. Error #" + www.error);
-            }
+            Debug.Log("User Created Successfully");
         }
+        else
+        {
+            Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
+        }
+        
     }
     public void VerifyInputs()
     {
