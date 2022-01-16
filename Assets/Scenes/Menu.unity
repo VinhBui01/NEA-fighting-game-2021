@@ -560,6 +560,18 @@ MonoBehaviour:
           m_StringArgument: Player 2
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1955824817}
+        m_TargetAssemblyTypeName: Registration, Assembly-CSharp
+        m_MethodName: SetLoginType
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &158214130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3502,6 +3514,18 @@ MonoBehaviour:
           m_StringArgument: Register
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1955824817}
+        m_TargetAssemblyTypeName: Registration, Assembly-CSharp
+        m_MethodName: SetLoginType
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1267717900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,6 +4385,30 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1060530337}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Player 1
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1955824817}
+        m_TargetAssemblyTypeName: Registration, Assembly-CSharp
+        m_MethodName: SetLoginType
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -5414,6 +5462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955824816}
   - component: {fileID: 1955824817}
+  - component: {fileID: 1955824819}
   m_Layer: 5
   m_Name: Input Player data
   m_TagString: Untagged
@@ -5457,6 +5506,15 @@ MonoBehaviour:
   nameField: {fileID: 1916988229}
   passwordField: {fileID: 947425647}
   submitButton: {fileID: 1994485532}
+  LoginType: 0
+--- !u!222 &1955824819
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955824815}
+  m_CullTransparentMesh: 1
 --- !u!1 &1965554084
 GameObject:
   m_ObjectHideFlags: 0
