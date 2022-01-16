@@ -1318,6 +1318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90082a3ffc2f094ba2346ed8e5c5bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1ID: 
+  P2ID: 
 --- !u!1 &445565531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,6 +5508,8 @@ MonoBehaviour:
   nameField: {fileID: 1916988229}
   passwordField: {fileID: 947425647}
   submitButton: {fileID: 1994485532}
+  P1ID: 
+  P2ID: 
   LoginType: 0
 --- !u!222 &1955824819
 CanvasRenderer:
@@ -5673,21 +5677,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1101706800}
-        m_TargetAssemblyTypeName: MenuManager.MenuManager, Assembly-CSharp
-        m_MethodName: MoveScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 420464294}
-        m_TargetAssemblyTypeName: DataController, Assembly-CSharp
-        m_MethodName: online
+        m_TargetAssemblyTypeName: StartManager, Assembly-CSharp
+        m_MethodName: onlinestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

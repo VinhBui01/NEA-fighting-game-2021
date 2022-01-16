@@ -40,9 +40,8 @@ public class DataManager : MonoBehaviour
         return playerint;
     }
 
-    int[][] OfflineStart(string[] data)
+    int[][] DataParse(string[] data) // loads data values to game manager
     {
-        Debug.Log(data[0]); Debug.Log(data[1]); Debug.Log(data[2]); Debug.Log(data[3]);
         int GameTime = Int32.Parse(data[1]);
         string P1attackstring = data[2];
         int[] P1attacks = split(P1attackstring);
@@ -52,13 +51,10 @@ public class DataManager : MonoBehaviour
         if (data[1] != "000")
         //repeated runs
         {
-            Debug.Log(GameTime);
-            Debug.Log("P1");
             float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime);
-            Debug.Log("H1" + P1HP);
-            Debug.Log("P2");
+
             float P2HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime);
-            Debug.Log("H2" + P2HP);
+
             LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
         }
         else
@@ -101,23 +97,22 @@ public class DataManager : MonoBehaviour
         else if (Savedata[0] == "false")
         {
             Online = false;
-            { OfflineTotal = OfflineStart(Savedata); }
-
         }
+        OfflineTotal = DataParse(Savedata);
         GameManager.enabled= true; //starts game after data is loaded
     }
-
-        // Update is called once per frame
-        void Update()
+    
+    // Update is called once per frame
+    void Update()
+    {
+    if (GameManager.GameWon) 
         {
-            if (GameManager.GameWon) 
-            {
-                if (Online == false) 
-            {
-                string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
-                string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
-                string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer)/60).ToString(), P1string, P2string };
-                File.WriteAllLines("SaveFile.txt", lines); ;
+        if (Online == false) 
+        {
+        string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
+        string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
+        string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer)/60).ToString(), P1string, P2string };
+        File.WriteAllLines("SaveFile.txt", lines); ;
             }
                 if (Online == true) { }
             { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
