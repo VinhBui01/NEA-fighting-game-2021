@@ -4,8 +4,10 @@ using System;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 public class DataManager : MonoBehaviour
 {
+    string MatchupID;
     int[][] OfflineTotal = new int[3][];
     bool Online;
     public GameManager GameManager;
@@ -88,21 +90,45 @@ public class DataManager : MonoBehaviour
         string[] lines = { "false", (OfflineTotal[0][0] + GameManager.timer).ToString(), P1string, P2string };
         File.WriteAllLines("SaveFile.txt", lines);
     }
+ IEnumerator onlineend()//loads data to database
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("MatchupID", MatchupID);
+        form.AddField("P1H", GameManager.P1HeavyCount);
+        form.AddField("P1L", GameManager.P1LightCount);
+        form.AddField("P2H", GameManager.P2HeavyCount);
+        form.AddField("P2L", GameManager.P2LightCount);
+
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/AddMatches.php", form);
+        yield return www.SendWebRequest();
+        if (www.downloadHandler.text == "300")
+        {
+            Debug.Log("Registration Successful");
+        }
+        else
+        {
+            Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
+        }
+        www.Dispose();
+    }
 
     void Start()
     {
-        string[] Savedata = new string[5]; //reads save file data
+        string[] Savedata = new string[4]; //reads save file data
         Savedata = ReadSave("SaveFile.txt");
         if (Savedata[0] == "true") { Online = true; }
         else if (Savedata[0] == "false")
         {
             Online = false;
         }
+        MatchupID = Savedata[4];
         OfflineTotal = DataParse(Savedata);
         GameManager.enabled= true; //starts game after data is loaded
     }
-    
+
     // Update is called once per frame
+
+   
     void Update()
     {
         if (GameManager.GameWon) 
@@ -115,10 +141,13 @@ public class DataManager : MonoBehaviour
                 File.WriteAllLines("SaveFile.txt", lines);
             }
 
-            else if (Online == true) { }
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
+            else if (Online == true) 
+            { 
+            
             }
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
+            
         }
     } 
 

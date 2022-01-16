@@ -17,7 +17,7 @@ public class StartManager : MonoBehaviour
 
     public void Clear() //reformats text file to empty for offline start
     {
-        string[] lines = {"false", "000", "P1 000 000", "P2 000 000" };
+        string[] lines = {"false", "000", "P1 000 000", "P2 000 000" , ""};
         File.WriteAllLines("SaveFile.txt", lines);
     }
 
@@ -42,13 +42,13 @@ public class StartManager : MonoBehaviour
         yield return www.SendWebRequest();
         if ((www.downloadHandler.text).Split('\t')[0] == "200")
         {
-            string[] data = new string[5];
-            for (int i = 1; i < 6; i++)
+            string[] data = new string[6];
+            for (int i = 1; i < 7; i++)
             {
                 data[i-1] = (www.downloadHandler.text).Split('\t')[i];
             }
             Debug.Log("Offline Start data recieved");
-            string[] lines = { "true", data[0], ("P1 "+ data[1] + " "+  data[2]), ("P1 "+ data[2] + " " + data[3])};
+            string[] lines = { "true", data[1], ("P1 "+ data[2] + " "+  data[3]), ("P1 "+ data[4] + " " + data[5]), data[6]};
             File.WriteAllLines("SaveFile.txt", lines);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
