@@ -30,6 +30,7 @@ public class Registration : MonoBehaviour
         {
             Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
         }
+        www.Dispose();
         
     }
     public void VerifyInputs()
