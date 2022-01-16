@@ -10,10 +10,10 @@ public class Registration : MonoBehaviour
     public TMP_InputField passwordField;
 
     public Button submitButton;
-    public string[] P1Login = new string[2];
-    public string[] P2Login = new string[2];
+    public string P1ID;
+    public string P2ID;
     public int LoginType;
-    private bool LoginSuccess;
+    private string LoginSuccess;
     public void CallRegister()
     {
         if (LoginType == 0) //logintype 0 is registration
@@ -23,23 +23,21 @@ public class Registration : MonoBehaviour
         }
         else if (LoginType == 1)
         {
-            LoginSuccess = false;
+            LoginSuccess = "false";
             StartCoroutine(Login());
-            if (LoginSuccess == true)
+            if (LoginSuccess != "false")
             {
-                P1Login[0] = nameField.text;
-                P1Login[1] = passwordField.text;
+                P1ID = LoginSuccess;
             }
 
         }
         else if (LoginType == 2)
         {
-            LoginSuccess = false;
+            LoginSuccess = "false";
             StartCoroutine(Login());
-            if (LoginSuccess == true)
+            if (LoginSuccess != "false")
             {
-                P2Login[0] = nameField.text;
-                P2Login[1] = passwordField.text;
+                P2ID = LoginSuccess;
             }
 
         }
@@ -50,7 +48,7 @@ public class Registration : MonoBehaviour
         LoginType = num;
     }
 
-    IEnumerator Register()
+    IEnumerator Register()//creates new record in user table
     {
         WWWForm form = new WWWForm();
             form.AddField("name", nameField.text);
@@ -69,16 +67,16 @@ public class Registration : MonoBehaviour
         
     }
 
-    IEnumerator Login()
+    IEnumerator Login()//checks if username and password are valid and returns userID
     {
         WWWForm form = new WWWForm();
         form.AddField("name", nameField.text);
         form.AddField("password", passwordField.text);
         UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/login.php", form);
         yield return www.SendWebRequest();
-        if (www.downloadHandler.text == "100")
+        if ((www.downloadHandler.text).Split('\t')[0] == "100")
         {
-            LoginSuccess = true;
+            LoginSuccess = (www.downloadHandler.text).Split('\t')[1];
             Debug.Log("Successful Login");
         }
         else
