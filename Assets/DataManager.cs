@@ -91,7 +91,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        string[] Savedata = new string[4]; //reads save file data
+        string[] Savedata = new string[5]; //reads save file data
         Savedata = ReadSave("SaveFile.txt");
         if (Savedata[0] == "true") { Online = true; }
         else if (Savedata[0] == "false")
@@ -105,17 +105,19 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    if (GameManager.GameWon) 
+        if (GameManager.GameWon) 
         {
-        if (Online == false) 
-        {
-        string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
-        string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
-        string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer)/60).ToString(), P1string, P2string };
-        File.WriteAllLines("SaveFile.txt", lines); ;
+            if (Online == false) 
+            {
+                string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
+                string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
+                string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer)/60).ToString(), P1string, P2string };
+                File.WriteAllLines("SaveFile.txt", lines);
             }
-                if (Online == true) { }
-            { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
+
+            else if (Online == true) { }
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
             }
         }
     } 
