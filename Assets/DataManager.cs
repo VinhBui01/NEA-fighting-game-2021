@@ -107,7 +107,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
+            Debug.Log("Match addition failed. Error #" + www.downloadHandler.text);
         }
         www.Dispose();
     }

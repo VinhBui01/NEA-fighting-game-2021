@@ -54,7 +54,7 @@ public class StartManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
+            Debug.Log("Matctch start failed. Error #" + www.downloadHandler.text);
         }
         www.Dispose();
     }
