@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using PlayerGenerator;
-using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {

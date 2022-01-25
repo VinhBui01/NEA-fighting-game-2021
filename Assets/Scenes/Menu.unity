@@ -1318,8 +1318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90082a3ffc2f094ba2346ed8e5c5bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1ID: 
-  P2ID: 
+  Registration: {fileID: 1955824817}
+  P1ID: -1
+  P2ID: -1
 --- !u!1 &445565531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,9 +5508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameField: {fileID: 1916988229}
   passwordField: {fileID: 947425647}
+  StartManager: {fileID: 420464294}
   submitButton: {fileID: 1994485532}
-  P1ID: 
-  P2ID: 
   LoginType: 0
 --- !u!222 &1955824819
 CanvasRenderer:
