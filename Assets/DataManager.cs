@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using TMPro;
 using MenuManager;
 public class DataManager : MonoBehaviour
 {
@@ -11,6 +12,22 @@ public class DataManager : MonoBehaviour
     int[][] OfflineTotal = new int[3][];
     bool Online;
     public GameManager GameManager;
+    public TMP_Text P1HPUI;
+    public TMP_Text P2HPUI;
+    public TMP_Text P1LUI;
+    public TMP_Text P2LUI;
+    public TMP_Text P1HUI;
+    public TMP_Text P2HUI;
+
+    void pregame()
+    {
+        P1HPUI.text = "HP: " + GameManager.P1HP;
+        P2HPUI.text = "HP: " + GameManager.P2HP;
+        P1LUI.text = "LD: " + GameManager.P1Light;
+        P2LUI.text = "LD: " + GameManager.P2Light;
+        P1HUI.text = "HD: " + GameManager.P1Heavy;
+        P2HUI.text = "HD: " + GameManager.P2Heavy;
+    }
     public string[] ReadSave(string filename) //tries to open file
     {
         try
@@ -158,7 +175,7 @@ public class DataManager : MonoBehaviour
             }
             MatchupID = Savedata[4];
             OfflineTotal = DataParse(Savedata);
-            GameManager.enabled = true; //starts game after data is loaded
+            pregame();
         }
 
         // Update is called once per frame

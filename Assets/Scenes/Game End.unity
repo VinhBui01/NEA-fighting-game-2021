@@ -754,6 +754,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Play Again
       objectReference: {fileID: 0}
+    - target: {fileID: 4125966911074448945, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6591493422524452533, guid: d2ea70fc336a6df449f198676d39fc1f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
