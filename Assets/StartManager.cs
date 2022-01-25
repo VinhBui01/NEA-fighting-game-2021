@@ -19,7 +19,7 @@ public class StartManager : MonoBehaviour
 
     public void Clear() //reformats text file to empty for offline start
     {
-        string[] lines = {"false", "000", "P1 000 000", "P2 000 000" , ""};
+        string[] lines = {"false", "000", "P1 000 000", "P2 000 000" , "null"};
         File.WriteAllLines("SaveFile.txt", lines);
     }
 

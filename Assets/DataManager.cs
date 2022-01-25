@@ -110,18 +110,13 @@ public class DataManager : MonoBehaviour
         IEnumerator onlineend()//loads data to database
         {
             WWWForm form = new WWWForm();
-            //form.AddField("MatchupID", MatchupID);
-            //form.AddField("Time", GameManager.timer);
-            //form.AddField("P1H", GameManager.P1HeavyCount);
-            //form.AddField("P1L", GameManager.P1LightCount);
-            //form.AddField("P2H", GameManager.P2HeavyCount);
-            //form.AddField("P2L", GameManager.P2LightCount);
-            form.AddField("MatchupID", 1);
-            form.AddField("Time", 120);
-            form.AddField("P1H", 3);
-            form.AddField("P1L", 7);
-            form.AddField("P2H", 2);
-            form.AddField("P2L", 6);
+            form.AddField("MatchupID", MatchupID);
+            form.AddField("Time", GameManager.timer);
+            form.AddField("P1H", GameManager.P1HeavyCount);
+            form.AddField("P1L", GameManager.P1LightCount);
+            form.AddField("P2H", GameManager.P2HeavyCount);
+            form.AddField("P2L", GameManager.P2LightCount);
+
 
         UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/AddMatches.php", form);
             yield return www.SendWebRequest();
@@ -185,11 +180,13 @@ public class DataManager : MonoBehaviour
         {
             if (GameManager.GameWon)
             {
+            GameManager.enabled = false;
+            GameManager.GameWon = false;
                 if (Online == false)
                 {
                     string P1string = "p1 " + (OfflineTotal[1][0] + GameManager.P1HeavyCount).ToString() + " " + (OfflineTotal[1][1] + GameManager.P1LightCount).ToString();
                     string P2string = "p2 " + (OfflineTotal[2][0] + GameManager.P2HeavyCount).ToString() + " " + (OfflineTotal[2][1] + GameManager.P2LightCount).ToString();
-                    string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer) / 60).ToString(), P1string, P2string };
+                    string[] lines = { "false", (OfflineTotal[0][0] + (GameManager.timer) / 60).ToString(), P1string, P2string, "null"};
                     File.WriteAllLines("SaveFile.txt", lines);
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }

@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         Player2.initinput(false, P2Left, P2Right, P2Jump, P2Dash, P2AttackL, P2AttackH, P2Ult); //instance of player 2
         Player2.initdamage(P2Charge, P1Heavy, P1Light, P2HP); //instance of player 2
         Player2.transform.Rotate(new Vector3(0, 180, 0));//reverses player 2 direction
-
+        Player2.DashDistance = -Player2.DashDistance;
         SetinitialSliders((int)Player1.CustomHP, Player1.CustomMaxCharge, P1HPBar, P1ChargeBar, P1AttackBar, P1DashBar);
         SetinitialSliders((int)Player2.CustomHP, Player2.CustomMaxCharge, P2HPBar, P2ChargeBar, P2AttackBar, P2DashBar);
         timer = 0;

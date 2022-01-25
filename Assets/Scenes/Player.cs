@@ -27,7 +27,7 @@ namespace PlayerGenerator
         int JumpCount = 1; //number of jumps available
         public static float MoveSpeed = 13f;
         public static float JumpHeight = 65f;
-        public static float DashDistance = 60f;
+        public float DashDistance = 60f;
         float YVelocity;
         float XVelocity;
         bool FacingRight { get; set; } //stores direction facing
