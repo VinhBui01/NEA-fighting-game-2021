@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 157926206}
   - component: {fileID: 157926205}
   m_Layer: 5
-  m_Name: Attack manager
+  m_Name: Dash manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c5919edb99efe4790323cef15e4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 157926206}
+  slider: {fileID: 1716105828}
 --- !u!114 &157926206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +744,7 @@ MonoBehaviour:
   HeavyCount: 0
   LightCount: 0
   Charge: 0
+  DashDistance: 60
   AttackLockedL: 0
   AttackLockedH: 0
   isbeingattacked: 0
@@ -2314,6 +2315,7 @@ MonoBehaviour:
   HeavyCount: 0
   LightCount: 0
   Charge: 0
+  DashDistance: 60
   AttackLockedL: 0
   AttackLockedH: 0
   isbeingattacked: 0
@@ -4921,7 +4923,7 @@ GameObject:
   - component: {fileID: 1716105828}
   - component: {fileID: 1716105827}
   m_Layer: 5
-  m_Name: Dash manager
+  m_Name: Attack manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4959,7 +4961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c5919edb99efe4790323cef15e4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1716105828}
+  slider: {fileID: 157926206}
 --- !u!114 &1716105828
 MonoBehaviour:
   m_ObjectHideFlags: 0
