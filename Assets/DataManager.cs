@@ -65,7 +65,7 @@ public class DataManager : MonoBehaviour
         string P2attackstring = data[3];
         int[] P2attacks = split(P2attackstring);
         //Hp is calculated based on damage recieved
-        if (data[1] != "000")
+        if (Int32.Parse(data[1]) != 0)
         //repeated runs
         {
             float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime);
@@ -111,7 +111,7 @@ public class DataManager : MonoBehaviour
         {
             WWWForm form = new WWWForm();
             form.AddField("MatchupID", MatchupID);
-            form.AddField("Time", GameManager.timer);
+            form.AddField("Time", GameManager.timer/60);
             form.AddField("P1H", GameManager.P1HeavyCount);
             form.AddField("P1L", GameManager.P1LightCount);
             form.AddField("P2H", GameManager.P2HeavyCount);

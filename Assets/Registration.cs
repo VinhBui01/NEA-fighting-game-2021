@@ -14,8 +14,10 @@ public class Registration : MonoBehaviour
     private string LoginSuccess;
     public void CallRegister()
     {
+        Debug.Log("click");
         if (LoginType == 0) //logintype 0 is registration
         {
+            
             StartCoroutine(Register());
 
         }
@@ -68,7 +70,7 @@ public class Registration : MonoBehaviour
         }
         else
         {
-            Debug.Log("User creation failed. Error #" + www.downloadHandler.text);
+            Debug.Log("User login. Error #" + www.downloadHandler.text);
         }
 
         www.Dispose();
