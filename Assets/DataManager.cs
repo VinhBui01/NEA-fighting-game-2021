@@ -8,10 +8,11 @@ using TMPro;
 using MenuManager;
 public class DataManager : MonoBehaviour
 {
-    string MatchupID;
-    int[][] OfflineTotal = new int[3][];
-    bool Online;
-    public GameManager GameManager;
+    string MatchupID; //stores matchupID if it exists
+    int[][] OfflineTotal = new int[3][]; //array that will store player data as integers
+    bool Online; //whether or not game is online
+    public GameManager GameManager; //link to GameManager script
+    //below are the text boxes that will be changed in order to output all the data
     public TMP_Text P1HPUI;
     public TMP_Text P2HPUI;
     public TMP_Text P1LUI;
@@ -19,7 +20,7 @@ public class DataManager : MonoBehaviour
     public TMP_Text P1HUI;
     public TMP_Text P2HUI;
 
-    void pregame()
+    void pregame() //subroutine to output all the initial values
     {
         P1HPUI.text = "HP: " + GameManager.P1HP;
         P2HPUI.text = "HP: " + GameManager.P2HP;
@@ -28,16 +29,16 @@ public class DataManager : MonoBehaviour
         P1HUI.text = "HD: " + GameManager.P1Heavy;
         P2HUI.text = "HD: " + GameManager.P2Heavy;
     }
-    public string[] ReadSave(string filename) //tries to open file
+    public string[] ReadSave(string filename) //subroutine to open file
     {
-        try
+        try //tries to open file
         {
-            string[] ReadText = File.ReadAllLines(filename);
+            string[] ReadText = File.ReadAllLines(filename); 
             return ReadText;
         }
-        catch (FileNotFoundException)
+        catch (FileNotFoundException) //error handling
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); //returns player to menu
             return null;
         }
     }
@@ -68,9 +69,9 @@ public class DataManager : MonoBehaviour
         if (Int32.Parse(data[1]) != 0)
         //repeated runs
         {
-            float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime);
+            float P1HP = HPcalculation(P1attacks[0], P1attacks[1], GameTime); //calculates P1 values
 
-            float P2HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime);
+            float P2HP = HPcalculation(P2attacks[0], P2attacks[1], GameTime); //calculates P2 values
 
             LoadAttackData(4000, 2000, P1HP, 4000, 2000, P2HP);
         }
