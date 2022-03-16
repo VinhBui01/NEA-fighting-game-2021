@@ -164,8 +164,8 @@ namespace PlayerGenerator
         {
             if (AttackLocked == false & Input.GetKeyDown(InputKey) & AttackTime >= 60)
             {
-                StartCoroutine(InputLock(0.35f));
-                StartCoroutine(AttackLockL(0.15f));
+                StartCoroutine(InputLock(0.35f)); //locks input
+                StartCoroutine(AttackLockL(0.15f)); //activates hurtbox
 
             }
         }
@@ -173,8 +173,8 @@ namespace PlayerGenerator
         {
             if (AttackLocked == false & Input.GetKeyDown(InputKey) & AttackTime >= 60)
             {
-                StartCoroutine(InputLock(0.9f));
-                StartCoroutine(AttackLockH(0.35f));
+                StartCoroutine(InputLock(0.9f)); //locks input
+                StartCoroutine(AttackLockH(0.35f)); //activates hurtbox
             }
         }
 
@@ -182,8 +182,8 @@ namespace PlayerGenerator
         {
             if (AttackLocked == false & Input.GetKeyDown(InputKey) & Charge > CustomMaxCharge)
             {
-                StartCoroutine(InputLock(0.3f));
-                StartCoroutine(AttackLockUlt(6));
+                StartCoroutine(InputLock(0.3f)); //locks input
+                StartCoroutine(AttackLockUlt(6)); //activates sprite
             }
         }
 
@@ -201,9 +201,9 @@ namespace PlayerGenerator
 
         void Start()
         {
-            Physics2D.IgnoreLayerCollision(6, 6, true);
-            HeavyCount = 0;
-            LightCount = 0;
+            Physics2D.IgnoreLayerCollision(6, 6, true); //allows players to walk through each other
+            HeavyCount = 0; //resets hit counts
+            LightCount = 0; //resets hit counts
         }
         void Update()
         {
@@ -221,7 +221,7 @@ namespace PlayerGenerator
 
             ConstantMovement(InputRight, MoveSpeed, YVelocity, InputLocked); //move right
 
-            if (Input.GetKeyDown(InputDash) & DashTime>30 &InputLocked == false){ Dashcode(DashDistance, 0);}
+            if (Input.GetKeyDown(InputDash) & DashTime>30 &InputLocked == false){ Dashcode(DashDistance, 0);} //dash
             LightAttack(InputAttackL, AttackLockedL);
             HeavyAttack(InputAttackH, AttackLockedH);
 
